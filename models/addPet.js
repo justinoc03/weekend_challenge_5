@@ -9,7 +9,7 @@ var petSchema = new Schema({
   petUrl: String
 });
 
-
+//whatever is in the name slot will turn into a plural word (petsDB turns into petsDBs)
 var addPet = mongoose.model('petsDB', petSchema);
 
 module.exports = addPet;

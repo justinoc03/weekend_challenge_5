@@ -9,12 +9,15 @@ var port = process.env.PORT || 5000;
 var mongoose = require('mongoose');
 app.use(bodyParser.json());
 
+//use this instead of routers
+var addPet = require('../models/addPet.js');
+
 //connect to the DB with DB name: petsDB
 mongoose.connect("mongodb://localhost:27017/petsDB");
 
 //get the DB listening
 app.listen(port, function(){
-  console.log('FTL Drive spun up on', port + 'brace for jump...');
+  console.log('FTL Drive spun up on', port + ', brace for jump...');
 });
 
 //GET info already sitting in server
@@ -23,9 +26,27 @@ res.sendFile( path.resolve( 'public/index.html' ) );
 });
 
 
-/////////////////Add New Pets////////////////////////////////
+/////////////////Show All Pets////////////////////////////////
 //use this instead of routers
-var addPet = require('../models/addPet.js');
+app.get('/viewPets', function(req, res){
+  console.log('in viewPets');
+
+  addPet.find({}, function(err, petResults) {
+    if(err){
+      console.log('error occurred:', err);
+      res.sendStatus(500);
+    }else{
+      res.send();
+      console.log(petResults);
+    }
+  });
+});
+
+
+
+
+
+/////////////////Add New Pets////////////////////////////////
 
 app.post('/addNewPet', function(req, res){
   console.log('hit the .post addNewPet');
