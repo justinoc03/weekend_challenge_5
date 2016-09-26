@@ -2,7 +2,7 @@ console.log('js is sourced');
 
 var myApp = angular.module("myApp", ["ngRoute"]);
 
-myApp.controller( 'poeDameron', [ '$scope', '$http', function( $scope, $http ){
+myApp.controller( 'petsHome', [ '$scope', '$http', function( $scope, $http ){
   console.log( 'NG' );
 
 }]);
