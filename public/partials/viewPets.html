@@ -3,10 +3,12 @@
 
 <div ng-controller="viewPetsController">
 
+<!-- look in viewPetsController for $scope.showPets. This is where the showPets name comes from -->
+<!-- Also, the ng-repeat string is actually a for loop the appends all iterations of objects in the db to the DOM -->
   <div ng-repeat="friends in showPets">
     <h4>Pet Name: {{friends.name}}</h4>
     <h4>Pet Age: {{friends.age}}</h4>
-    <h4 class="imageDisplay"><img src="{{friends.petUrl}}" alt="" /></h4>
+    <img ng-src="{{friends.petUrl}}" alt="" />
     <hr>
 
   </div><!--end of repeat-->

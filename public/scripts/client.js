@@ -2,8 +2,9 @@ console.log('js is sourced');
 
 var myApp = angular.module("myApp", ["ngRoute"]);
 
+//directly connects with index.html via the ng-app and ng-controller parts
 myApp.controller( 'petsHome', [ '$scope', '$http', function( $scope, $http ){
-  console.log( 'NG' );
+  console.log( 'NG is sourced' );
 
 }]);
 

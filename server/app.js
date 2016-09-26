@@ -5,7 +5,7 @@ var bodyParser = require( 'body-parser' );
 var urlencodedParser = bodyParser.urlencoded( { extended: true } );
 var port = process.env.PORT || 5000;
 
-//only require mongoose here if not using routers
+//require mongoose and use bodyParser for .posts (otherwise post wont work)
 var mongoose = require('mongoose');
 app.use(bodyParser.json());
 
@@ -31,6 +31,8 @@ res.sendFile( path.resolve( 'public/index.html' ) );
 app.get('/viewPets', function(req, res){
   console.log('in viewPets');
 
+//use the name of the model to find something in the DB, NOT THE DB
+//this particular seach looks for ALL documents in the DB. You could narrow down the search in the find()
   petsModel.find({}, function(err, petResults) {
     if(err){
       console.log('error occurred:', err);
@@ -46,13 +48,14 @@ app.get('/viewPets', function(req, res){
 
 
 /////////////////Add New Pets////////////////////////////////
-
+//remember that .post requires bodyParser because bodyParser takes the information from the DOM and processes it for the post
 app.post('/addNewPet', function(req, res){
   console.log('hit the .post addNewPet');
   console.log('request body', req.body);
 
   var sendData = req.body;
 
+//newPet refers to the model, in this case is petsModel
   var newPet = new petsModel({
     name: sendData.name ,
     age: sendData.age,
@@ -61,6 +64,7 @@ app.post('/addNewPet', function(req, res){
     petUrl: sendData.petUrl
   });
 
+//.save refers to the variable above, newPet in this case
   newPet.save(function(err){
       if(err){
         console.log('error occurred:', err);

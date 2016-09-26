@@ -11,7 +11,8 @@ var petSchema = new Schema({
 
 });
 
-//whatever is in the name slot will turn into a plural word (petsDB turns into petsDBs)
+//whatever is in the name slot will turn the COLLECTION (collections are inside databases) into a plural word (petsDB turns into petsDBs)
+//you almost never actually call a collection inside mongo/mongoose so it isn't much of an issue. Most of the time you would be using the DB name
 var petsModel = mongoose.model('petsDB', petSchema);
 
 module.exports = petsModel;
