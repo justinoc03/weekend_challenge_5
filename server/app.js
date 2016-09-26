@@ -45,7 +45,6 @@ app.get('/viewPets', function(req, res){
 
 
 
-
 /////////////////Add New Pets////////////////////////////////
 
 app.post('/addNewPet', function(req, res){
@@ -59,7 +58,7 @@ app.post('/addNewPet', function(req, res){
     age: sendData.age,
     animalType: sendData.animalType,
     createdOn: sendData.createdOn,
-    petUrl: sendData.Url
+    petUrl: sendData.petUrl
   });
 
   newPet.save(function(err){

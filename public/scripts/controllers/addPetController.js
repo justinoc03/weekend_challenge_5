@@ -10,7 +10,7 @@ console.log('in addPetController');
         name: $scope.petName,
         age: $scope.petAge,
         animalType: $scope.petType,
-        petUrl: $scope.petLink
+        petUrl: $scope.petUrl
       }; // end newPet object
 
       this.product = newPet;
