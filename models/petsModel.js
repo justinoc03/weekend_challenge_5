@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+//build object literal for adding to mongoDB
 var petSchema = new Schema({
   name: String,
   age: Number,
@@ -11,6 +12,6 @@ var petSchema = new Schema({
 });
 
 //whatever is in the name slot will turn into a plural word (petsDB turns into petsDBs)
-var addPet = mongoose.model('petsDB', petSchema);
+var petsModel = mongoose.model('petsDB', petSchema);
 
-module.exports = addPet;
+module.exports = petsModel;

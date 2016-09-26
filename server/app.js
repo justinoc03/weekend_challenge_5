@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 app.use(bodyParser.json());
 
 //use this instead of routers
-var addPet = require('../models/addPet.js');
+var petsModel = require('../models/petsModel.js');
 
 //connect to the DB with DB name: petsDB
 mongoose.connect("mongodb://localhost:27017/petsDB");
@@ -31,7 +31,7 @@ res.sendFile( path.resolve( 'public/index.html' ) );
 app.get('/viewPets', function(req, res){
   console.log('in viewPets');
 
-  addPet.find({}, function(err, petResults) {
+  petsModel.find({}, function(err, petResults) {
     if(err){
       console.log('error occurred:', err);
       res.sendStatus(500);
@@ -53,7 +53,7 @@ app.post('/addNewPet', function(req, res){
 
   var sendData = req.body;
 
-  var newPet = new addPet({
+  var newPet = new petsModel({
     name: sendData.name ,
     age: sendData.age,
     animalType: sendData.animalType,
