@@ -36,7 +36,7 @@ app.get('/viewPets', function(req, res){
       console.log('error occurred:', err);
       res.sendStatus(500);
     }else{
-      res.send();
+      res.send(petResults);
       console.log(petResults);
     }
   });
