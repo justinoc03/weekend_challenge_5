@@ -33,7 +33,7 @@ app.post('/addNewPet', function(req, res){
 
   var sendData = req.body;
 
-  var newPet = new Pet({
+  var newPet = new addPet({
     name: sendData.name ,
     age: sendData.age,
     animalType: sendData.animalType,
@@ -41,7 +41,7 @@ app.post('/addNewPet', function(req, res){
     petUrl: sendData.Url
   });
 
-  newUser.save(function(err){
+  newPet.save(function(err){
       if(err){
         console.log('error occurred:', err);
         res.sendStatus(500);
